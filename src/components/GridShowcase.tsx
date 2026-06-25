@@ -35,7 +35,7 @@ const BRAND_SLOTS = [
   { row: 2, col: 4, startIndex: 6 },
 ];
 
-const MOBILE_CREATORS = CREATORS.slice(0, 2);
+const MOBILE_CREATORS = CREATORS;
 
 function PortraitCell({ name, image }: { name: string; image: string }) {
   return (
@@ -289,7 +289,7 @@ export default function GridShowcase({
           <h2 className="grid-quad-title grid-quad-title--tall">{titleLine1}</h2>
           <p className="grid-quad-subtitle">{titleLine2}</p>
         </div>
-        <MobileCarousel type={type} creators={type === "creators" ? items?.slice(0, 2) : undefined} />
+        <MobileCarousel type={type} creators={type === "creators" ? items : undefined} />
       </div>
     </section>
   );

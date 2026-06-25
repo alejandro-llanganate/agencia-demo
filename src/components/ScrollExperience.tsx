@@ -35,6 +35,7 @@ export default function ScrollExperience() {
       gsap.set(phoneWrap, { opacity: 1, scale: 1, filter: "none", x: 0, y: 0 });
       gsap.set(sideCopy, { opacity: 1, x: 0, y: 0 });
       gsap.set(bgText, { opacity: 1, x: 0, y: 0 });
+      gsap.set(".hero-phone-mobile-type", { opacity: 1, y: 0 });
       gsap.set(phone, { rotateX: 0, rotateY: 0, x: 0, y: 0 });
       transitionedRef.current = false;
     };
@@ -76,6 +77,7 @@ export default function ScrollExperience() {
         })
         .to(sideCopyRef.current, { opacity: 0, x: -40, duration: 0.55, ease: "power2.in" }, 0)
         .to(bgTextRef.current, { opacity: 0, duration: 0.45, ease: "power2.in" }, 0)
+        .to(".hero-phone-mobile-type", { opacity: 0, y: -16, duration: 0.45, ease: "power2.in" }, 0)
         .to(
           phoneWrapRef.current,
           { opacity: 0, scale: 0.92, filter: "blur(6px)", duration: 0.6, ease: "power2.in" },
@@ -136,6 +138,17 @@ export default function ScrollExperience() {
         yoyo: true,
         ease: "sine.inOut",
       });
+
+      if (window.matchMedia("(max-width: 900px)").matches) {
+        gsap.from(".hero-phone-mobile-word, .hero-phone-mobile-tag", {
+          y: 28,
+          opacity: 0,
+          duration: 0.85,
+          stagger: 0.1,
+          delay: 0.65,
+          ease: "power3.out",
+        });
+      }
     }, masterRef);
 
     return () => {
@@ -234,6 +247,20 @@ export default function ScrollExperience() {
                               preload="auto"
                             />
                             <div className="hero-phone-screen-overlay" />
+                            <div className="hero-phone-mobile-type" aria-hidden>
+                              <div className="hero-phone-mobile-type-inner">
+                                <span className="hero-phone-mobile-word hero-phone-mobile-word--outline">
+                                  Crea
+                                </span>
+                                <span className="hero-phone-mobile-word hero-phone-mobile-word--red">
+                                  con
+                                </span>
+                                <span className="hero-phone-mobile-word hero-phone-mobile-word--cream">
+                                  MALI
+                                </span>
+                                <p className="hero-phone-mobile-tag">Historias que venden</p>
+                              </div>
+                            </div>
                             <div ref={inscreenUIRef} className="hero-phone-inscreen">
                               <p>@mali.agency</p>
                               <span className="hero-phone-rec-dot" />
@@ -245,7 +272,8 @@ export default function ScrollExperience() {
                       </div>
                     </div>
                   </div>
-                  <span className="hero-phone-hint">Pasa el cursor sobre el celular</span>
+                  <span className="hero-phone-hint hero-phone-hint--desktop">Pasa el cursor sobre el celular</span>
+                  <span className="hero-phone-hint hero-phone-hint--mobile">Toca el celular para continuar</span>
                 </div>
               </div>
             </div>
