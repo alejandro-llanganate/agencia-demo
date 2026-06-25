@@ -8,6 +8,9 @@ const nextConfig: NextConfig = {
   basePath,
   assetPrefix: isGithubPages ? `${basePath}/` : undefined,
   trailingSlash: isGithubPages,
+  env: {
+    NEXT_PUBLIC_BASE_PATH: basePath,
+  },
   outputFileTracingRoot: import.meta.dirname,
   images: {
     unoptimized: isGithubPages,

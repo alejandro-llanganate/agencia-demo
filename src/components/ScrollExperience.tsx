@@ -2,8 +2,9 @@
 
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
+import { assetPath } from "@/lib/assetPath";
 
-const VIDEO_SRC = "/videos/tiktok-commercial.mp4";
+const VIDEO_SRC = assetPath("/videos/tiktok-commercial.mp4");
 
 export default function ScrollExperience() {
   const masterRef = useRef<HTMLDivElement>(null);

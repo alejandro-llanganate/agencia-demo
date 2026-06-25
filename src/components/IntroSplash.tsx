@@ -3,10 +3,11 @@
 import { useEffect, useRef } from "react";
 import Image from "next/image";
 import gsap from "gsap";
+import { assetPath } from "@/lib/assetPath";
 
 const MARQUEE_TEXT = "CREA CON MALI";
 
-const VIDEO_LOCAL = "/videos/tiktok-commercial.mp4";
+const VIDEO_LOCAL = assetPath("/videos/tiktok-commercial.mp4");
 const VIDEO_CDN =
   "https://assets.mixkit.co/videos/49141/49141-720.mp4";
 
@@ -265,7 +266,7 @@ export default function IntroSplash({ onComplete }: IntroSplashProps) {
               <div className="intro-right-logo">
                 <div className="logo-canvas">
                   <Image
-                    src="/logo_mali.png"
+                    src={assetPath("/logo_mali.png")}
                     alt="MALI"
                     fill
                     priority

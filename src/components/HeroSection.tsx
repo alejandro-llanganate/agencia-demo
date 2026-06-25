@@ -3,10 +3,11 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { assetPath } from "@/lib/assetPath";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const VIDEO_SRC = "/videos/tiktok-commercial.mp4";
+const VIDEO_SRC = assetPath("/videos/tiktok-commercial.mp4");
 const BG_TEXT = "CREA CON MALI";
 
 export default function HeroSection() {

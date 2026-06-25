@@ -5,10 +5,11 @@ import Image from "next/image";
 import Link from "next/link";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { assetPath } from "@/lib/assetPath";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const VIDEO_SRC = "/videos/tiktok-commercial.mp4";
+const VIDEO_SRC = assetPath("/videos/tiktok-commercial.mp4");
 const TYPING_TEXT = "¿Quieres ver otras experiencias?";
 
 const EXPERIENCES = [
@@ -16,7 +17,7 @@ const EXPERIENCES = [
     slug: "pizza-fest",
     title: "Pizza Fest",
     subtitle: "Producción · Branding · Campaña",
-    image: "/empresas/image copy 10.png",
+    image: assetPath("/empresas/image copy 10.png"),
     href: "/experiencias/pizza-fest",
   },
 ];

@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useIntro } from "./IntroGate";
+import { assetPath } from "@/lib/assetPath";
 
 const FOOTER_LINKS = {
   agencia: [
@@ -28,7 +29,7 @@ export default function SiteFooter() {
       <div className="site-footer-top">
         <div className="site-footer-brand">
           <Image
-            src="/logo_mali_white.png"
+            src={assetPath("/logo_mali_white.png")}
             alt="MALI Agency"
             width={80}
             height={80}

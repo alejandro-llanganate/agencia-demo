@@ -4,27 +4,28 @@ import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { assetPath } from "@/lib/assetPath";
 
 gsap.registerPlugin(ScrollTrigger);
 
 type SlotItem = { row: number; col: number };
 
 export const CREATORS = [
-  { name: "Busta Brothers", image: "/influencers/creator-1.png", row: 1, col: 1 },
-  { name: "Luciana Guchner", image: "/influencers/creator-2.png", row: 2, col: 2 },
-  { name: "Jonathan Cruz", image: "/influencers/creator-3.png", row: 1, col: 3 },
-  { name: "Nexar Gomez", image: "/influencers/image copy 3.png", row: 2, col: 4 },
+  { name: "Busta Brothers", image: assetPath("/influencers/creator-1.png"), row: 1, col: 1 },
+  { name: "Luciana Guchner", image: assetPath("/influencers/creator-2.png"), row: 2, col: 2 },
+  { name: "Jonathan Cruz", image: assetPath("/influencers/creator-3.png"), row: 1, col: 3 },
+  { name: "Nexar Gomez", image: assetPath("/influencers/image copy 3.png"), row: 2, col: 4 },
 ] satisfies (SlotItem & { name: string; image: string })[];
 
 export const BRAND_POOL = [
-  { name: "Marca 1", image: "/empresas/brand-1.png" },
-  { name: "Marca 2", image: "/empresas/brand-2.png" },
-  { name: "Marca 3", image: "/empresas/brand-3.png" },
-  { name: "Marca 4", image: "/empresas/brand-4.png" },
-  { name: "Marca 5", image: "/empresas/brand-5.png" },
-  { name: "Marca 6", image: "/empresas/brand-6.png" },
-  { name: "Marca 7", image: "/empresas/image copy 7.png" },
-  { name: "Marca 8", image: "/empresas/image copy 8.png" },
+  { name: "Marca 1", image: assetPath("/empresas/brand-1.png") },
+  { name: "Marca 2", image: assetPath("/empresas/brand-2.png") },
+  { name: "Marca 3", image: assetPath("/empresas/brand-3.png") },
+  { name: "Marca 4", image: assetPath("/empresas/brand-4.png") },
+  { name: "Marca 5", image: assetPath("/empresas/brand-5.png") },
+  { name: "Marca 6", image: assetPath("/empresas/brand-6.png") },
+  { name: "Marca 7", image: assetPath("/empresas/image copy 7.png") },
+  { name: "Marca 8", image: assetPath("/empresas/image copy 8.png") },
 ];
 
 const BRAND_SLOTS = [

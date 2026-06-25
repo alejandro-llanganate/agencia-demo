@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import { useIntro } from "./IntroGate";
+import { assetPath } from "@/lib/assetPath";
 
 export default function Navbar() {
   const { replayIntro } = useIntro();
@@ -28,7 +29,7 @@ export default function Navbar() {
           aria-label="MALI — ver intro"
         >
           <Image
-            src={onHero ? "/logo_mali_white.png" : "/logo_mali.png"}
+            src={onHero ? assetPath("/logo_mali_white.png") : assetPath("/logo_mali.png")}
             alt="MALI"
             width={72}
             height={72}

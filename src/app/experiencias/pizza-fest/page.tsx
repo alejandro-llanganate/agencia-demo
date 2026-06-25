@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { assetPath } from "@/lib/assetPath";
 
 const DELIVERABLES = [
   "Identidad visual del evento y key visual principal",
@@ -20,7 +21,7 @@ export default function PizzaFestPage() {
       <section className="case-hero">
         <div className="case-hero-image">
           <Image
-            src="/empresas/image copy 10.png"
+            src={assetPath("/empresas/image copy 10.png")}
             alt="Pizza Fest — campaña visual"
             fill
             priority
