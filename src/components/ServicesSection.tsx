@@ -37,7 +37,7 @@ const services = [
     title: "Contenido",
     desc: "Historias que convierten.",
     image:
-      "https://images.unsplash.com/photo-1611162616305-c69b393fdfb8?w=900&q=80&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=900&q=80&auto=format&fit=crop",
   },
 ];
 
@@ -137,8 +137,11 @@ export default function ServicesSection() {
 
         <div className="services-right">
           <div ref={visualRef} className="services-visual">
-            {services.map((s) => (
-              <div key={s.num} className="services-visual-slide">
+            {services.map((s, i) => (
+              <div
+                key={s.num}
+                className={`services-visual-slide ${activeIndex === i ? "services-visual-slide--active" : ""}`}
+              >
                 <Image src={s.image} alt={s.title} fill sizes="40vw" className="services-visual-img" unoptimized />
                 <div className="services-visual-gradient" />
                 <span className="services-visual-tag">{s.title}</span>

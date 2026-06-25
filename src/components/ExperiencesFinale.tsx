@@ -24,12 +24,60 @@ const EXPERIENCES = [
 
 export default function ExperiencesFinale() {
   const sectionRef = useRef<HTMLElement>(null);
+  const bgRef = useRef<HTMLDivElement>(null);
+  const typoRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
   const [typed, setTyped] = useState("");
   const [typingDone, setTypingDone] = useState(false);
 
   useEffect(() => {
     videoRef.current?.play().catch(() => {});
+  }, []);
+
+  useEffect(() => {
+    const bg = bgRef.current;
+    const typo = typoRef.current;
+    if (!bg || !typo) return;
+
+    const layers = typo.querySelectorAll<HTMLElement>(".hero-glitch");
+    gsap.set(layers, { xPercent: -50, yPercent: -50 });
+
+    const onMove = (e: MouseEvent) => {
+      const rect = bg.getBoundingClientRect();
+      const x = ((e.clientX - rect.left) / rect.width - 0.5) * 2;
+      const y = ((e.clientY - rect.top) / rect.height - 0.5) * 2;
+
+      gsap.to(typo, {
+        x: x * -88,
+        y: y * -56,
+        duration: 0.65,
+        ease: "power2.out",
+      });
+
+      layers.forEach((layer, i) => {
+        gsap.to(layer, {
+          x: x * (10 + i * 12),
+          y: y * (6 + i * 8),
+          duration: 0.5 + i * 0.1,
+          ease: "power2.out",
+        });
+      });
+    };
+
+    const onLeave = () => {
+      gsap.to(typo, { x: 0, y: 0, duration: 0.75, ease: "power2.out" });
+      layers.forEach((layer) => {
+        gsap.to(layer, { x: 0, y: 0, duration: 0.75, ease: "power2.out" });
+      });
+    };
+
+    bg.addEventListener("mousemove", onMove);
+    bg.addEventListener("mouseleave", onLeave);
+
+    return () => {
+      bg.removeEventListener("mousemove", onMove);
+      bg.removeEventListener("mouseleave", onLeave);
+    };
   }, []);
 
   useEffect(() => {
@@ -79,7 +127,7 @@ export default function ExperiencesFinale() {
 
   return (
     <section ref={sectionRef} className="exp-finale">
-      <div className="exp-finale-bg" aria-hidden>
+      <div ref={bgRef} className="exp-finale-bg" aria-hidden>
         <video
           ref={videoRef}
           className="exp-finale-video"
@@ -92,7 +140,7 @@ export default function ExperiencesFinale() {
         />
         <div className="exp-finale-vignette" />
         <div className="exp-finale-tint" />
-        <div className="exp-finale-typo">
+        <div ref={typoRef} className="exp-finale-typo">
           <div className="hero-glitch-line">
             <span className="hero-glitch hero-glitch--red">CREA CON MALI</span>
             <span className="hero-glitch hero-glitch--main">CREA CON MALI</span>

@@ -104,37 +104,37 @@ export default function WorkWithUsSection() {
                 <span className="work-form-sub">Agencia creativa</span>
               </div>
               <label className="work-field">
-                <span>Empresa</span>
+                <span className="work-field-label">Nombre de la empresa</span>
                 <input
                   type="text"
                   required
                   value={empresa}
                   onChange={(e) => setEmpresa(e.target.value)}
-                  placeholder="Nombre de la empresa"
+                  placeholder="Ej. Mi marca S.A."
                 />
               </label>
               <label className="work-field">
-                <span>Contacto</span>
+                <span className="work-field-label">Persona de contacto</span>
                 <input
                   type="text"
                   required
                   value={contacto}
                   onChange={(e) => setContacto(e.target.value)}
-                  placeholder="Tu nombre"
+                  placeholder="Tu nombre completo"
                 />
               </label>
               <label className="work-field">
-                <span>Teléfono</span>
+                <span className="work-field-label">Teléfono / WhatsApp</span>
                 <input
                   type="tel"
                   required
                   value={telefono}
                   onChange={(e) => setTelefono(e.target.value)}
-                  placeholder="+52 ..."
+                  placeholder="+52 55 1234 5678"
                 />
               </label>
               <label className="work-field">
-                <span>Me interesa</span>
+                <span className="work-field-label">¿En qué te podemos ayudar?</span>
                 <select value={interes} onChange={(e) => setInteres(e.target.value)}>
                   {INTERESTS.map((opt) => (
                     <option key={opt} value={opt}>
